@@ -1,0 +1,632 @@
+*
+    margin: 0
+    padding: 0
+    max-width: 100%
+    .container-fluid
+        margin: 0 auto
+        @media ( min-width: 1440px )
+            width: 1440px
+        // @media ( max-width: 991px )
+        //     width: 946px
+        @media ( max-width: 768px )
+            width: 704px
+        @media ( max-width: 480px )
+            width: 420px
+        @media ( max-width: 375px )
+            width: 312px
+
+    .text-8xl
+        font-size: clamp(48px, 6.7vw, 96px)
+        line-height: 1
+    .text-7xl
+        font-size: clamp(36px, 5vw, 72px)
+        line-height: 1
+    .text-6xl
+        font-size: clamp(30px, 4.2vw, 60px)
+        line-height: 1
+    .text-5xl
+        font-size: clamp(22px, 3.3vw, 48px)
+        line-height: 1
+    .text-4xl
+        font-size: clamp(20px, 2.5vw, 36px)
+        line-height: 2.5rem
+    .text-3xl
+        font-size: clamp(18px, 2vw, 30px)
+        line-height: 2.25rem
+        font-weight: 600
+    .text-2xl
+        font-size: clamp(16px, 1.7vw, 22px)
+        line-height: 2rem
+        font-weight: 400
+    .text-xl
+        font-size: clamp(16px, 1.4vw, 20px)
+        line-height: 1.75rem
+        font-weight: 400
+    .text-lg
+        font-size: clamp(16px, 1.25vw, 18px)
+        line-height: 1.75rem
+        font-weight: 400
+    .text-base
+        font-size: clamp(16px, 1vw, 16px)
+        line-height: 1.5rem
+        font-weight: 400
+    .slick-track
+        display: -webkit-box
+
+@mixin deskBig()
+    @media ( max-width: 1440px )
+        @content
+@mixin desk()
+    @media ( max-width: 1200px )
+        @content
+@mixin deskMini()
+    @media ( max-width: 1024px )
+        @content
+@mixin padBig()
+    @media ( max-width: 991px )
+        @content
+@mixin pad()
+    @media ( max-width: 768px )
+        @content
+@mixin padMini()
+    @media ( max-width: 576px )
+        @content
+@mixin mobile()
+    @media ( max-width: 480px )
+        @content
+@mixin mobileMini()
+    @media ( max-width: 375px )
+        @content
+
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap')
+// $color-bright: #F7F2E9
+$color-bright: #FCFAF5
+// $color-primary: #AB724E
+$color-primary: #7E9899
+$color-gray: #FAFAFA
+@keyframes imgMove
+    0%
+        transform: rotate(15deg)
+        opacity: 0
+    20%
+        transform: rotate(-15deg)
+        opacity: 0.5
+    100%
+        transform: rotate(0deg)
+        opacity: 1
+
+body
+    background-color: $color-bright
+    font-family: 'Noto Sans TC', sans-serif
+    // font-family: 'Roboto', sans-serif
+    // font-family: 'Tilt Warp', cursive
+    // font-family: 'Roboto Condensed', sans-serif
+    .navbar
+        background-color: transparent
+        position: relative
+        z-index: 5
+        width: 100%
+        transition: background-color 0.4s ease
+        .container-fluid
+            display: flex
+            justify-content: space-between
+            align-items: center
+            padding: 10px 80px
+            position: relative
+            @include deskMini
+                padding: 10px 0
+            @include mobile
+                padding: 10px
+            .navbar-brand
+                width: 100px
+            .navbar-content
+                display: flex
+                @include mobile
+                    flex-direction: column
+                    position: absolute
+                    top: 100%
+                    left: 50%
+                    transform: translateX(-50%)
+                    width: 100%
+                    background-color: #FFF
+                    max-height: 0
+                    overflow: hidden
+                    transition: .5s
+                    z-index: 1
+                .navbar-icons, .navbar-nav
+                    display: flex
+                    align-items: center
+                    list-style: none
+                    @include mobile
+                        flex-direction: column
+                    .nav-item
+                        @include mobile
+                            margin: 15px 0
+                    a
+                        color: $color-primary
+                        margin: 0 10px
+                        text-decoration: none
+                span
+                    display: none
+            label
+                display: none
+                @include mobile
+                    display: block
+            input
+                display: none
+                &:checked ~ .navbar-content
+                    max-height: 300px
+                    padding: 20px
+    .kv
+        position: relative
+        justify-content: center
+        display: flex
+        flex-direction: column
+        .kv-marquee
+            font-family: 'Tilt Warp', cursive
+            // font-size: 90px
+            color: #fff
+            display: flex
+            -webkit-box-orient: vertical
+            -webkit-box-direction: normal
+            -ms-flex-direction: row
+            flex-direction: row
+            overflow: hidden
+            .js-marquee-wrapper
+                // display: flex
+                display: -webkit-box
+                white-space: nowrap
+                .js-marquee
+                    display: flex
+                    flex-direction: row
+                    white-space: nowrap
+                    align-items: center
+                    margin-right: 0 !important
+            img
+                width: 50%
+                justify-content: center
+                align-items: center
+                display: flex
+                margin: 0 auto
+        .kv-marquee-top
+            margin: 20px 0 0 0
+        .kv-marquee-bottom
+            margin: 0 0 20px 0
+        .kv-banner
+            position: relative
+            margin: 60px auto
+            @include padMini
+                margin: 20px auto
+                padding: 20px
+            .kv-banner-imgList
+                position: absolute
+                left: 0
+                right: 0
+                bottom: 50px
+                margin: auto
+                @include padMini
+                    width: 30%
+                .slick-list
+                    .slick-track
+                        .imgItem
+                            .Img
+                                display: flex
+                                justify-content: center
+                                will-change: transform
+                                transform-origin: center
+                        .slick-current
+                            .Img
+                                animation: imgMove 0.15s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+            .kv-banner-txtBox
+                display: flex
+                align-items: flex-end
+                .right
+                    padding: 0 0 20px 20px
+    .about
+        position: relative
+        background-color: #fff
+        .container-fluid
+            .about-content
+                position: relative
+                overflow: hidden
+                .about-img
+                    position: relative
+                    .about-img-bg
+                        width: 100%
+                        display: flex
+                    .about-img-shampoo
+                        z-index: 1
+                        position: absolute
+                        bottom: -5px
+                        left: 50%
+                        -webkit-transform: translateX(-50%)
+                        transform: translateX(-50%)
+                        width: 800px
+                        filter: drop-shadow(2px 4px 18px rgba(0, 0, 0, 0.2))
+                        @include deskMini
+                            width: 500px
+                        @include pad
+                            width: 480px
+                        @include mobile
+                            width: 300px
+                        @include mobileMini
+                            width: 240px
+                        img
+                            width: 100%
+                .about-txt
+                    width: 50%
+                    background-color: $color-primary
+                    color: #fff
+                    text-align: right
+                    position: absolute
+                    top: 0
+                    bottom: 0
+                    right: 0
+                    @include desk
+                        position: relative
+                        width: 100%
+                        padding: 200px 0
+                    .about-txt-wrap
+                        position: absolute
+                        top: 50%
+                        transform: translateY(-50%)
+                        right: 100px
+                        @include desk
+                            top: 20px
+                            transform: translateY(0)
+                            right: 20px
+                        .text-3xl
+                        .cross
+                            position: relative
+                            width: 160px
+                            height: 160px
+                            background-color: transparent
+                            display: inline-block
+                            margin: 20px 0
+                            @include desk
+                                width: 50px
+                                height: 50px
+                                margin: 10px 0
+                            &::before, &::after
+                                content: ''
+                                position: absolute
+                                top: 50%
+                                left: 0
+                                width: 100%
+                                height: 1px
+                                background-color: #fff
+                            &::before
+                                transform: rotate(45deg)
+                            &::after
+                                transform: rotate(-45deg)
+                        .text-5xl
+                            line-height: 4.25rem
+                            margin: 20px 0
+                            @include desk
+                                line-height: 2.25rem
+                                margin: 10px 0
+                        .text-base
+                            width: 50%
+                            display: inline-block
+                            @include mobile
+                                width: 80%
+
+    .shampoo
+        padding: 196px 0
+        background-color: #fff
+        @include mobile
+            padding: 32px 0
+        &:nth-child(odd)
+            background-color: $color-gray
+        &:nth-child(even)
+            background-color: $color-bright
+        .container-fluid
+            .shampoo-item
+                position: relative
+                display: flex
+                align-items: center
+                .shampoo-item-txtbox
+                    .txtWrap
+                        .caption
+                            display: flex
+                            align-items: center
+                            font-weight: 600
+                            .text-4xl
+                                @include pad
+                                    line-height: 1.5rem
+                        .subheading
+                            margin: 16px auto 36px
+                            @include mobile
+                                margin: 4px auto 32px
+                    .typeList
+                        display: flex
+                        list-style: none
+                        @include mobile
+                            flex-wrap: wrap
+                            width: 100%
+                        li
+                            border-radius: 50%
+                            background-color: #fff
+                            margin: 0 20px
+                            width: 196px
+                            height: 196px
+                            justify-content: center
+                            display: flex
+                            flex-direction: column
+                            align-items: center
+                            cursor: pointer
+                            @include mobile
+                                margin: 5px
+                                width: 45%
+                                height: 120px
+                        .current
+                            background-color: $color-primary
+                            color: #fff
+                    .introList
+                        .introItem
+                            align-items: center
+                            margin: 50px auto
+                            display: none
+                            @include mobile
+                                margin: 16px auto
+                            .title
+                                width: 20%
+                                @include mobile
+                                    width: 30%
+                            .des
+                                width: 40%
+                                @include mobile
+                                    width: 70%
+                                .text-lg
+                                    @include mobile
+                                        line-height: 1.25rem
+                        .current
+                            display: flex
+                .shampoo-item-imgbox
+                    position: relative
+                    margin: 0 auto
+                    width: 100%
+                    @include deskMini
+                        display: none
+                    .bubbleBox
+                        position: absolute
+                        top: 30px
+                        left: 250px
+                        right: 0
+                        .bubble01, .bubble02, .bubble03, .bubble04, .bubble05, .bubble06
+                            position: absolute
+                        .bubble01
+                            top: 50px
+                        .bubble02
+                            top: 100px
+                        .bubble03
+                            top: 250px
+                        .bubble04
+                            top: 45px
+                        .bubble05
+                            top: 0px
+                        .bubble06
+                            top: 300px
+                    .foam
+                        position: absolute
+                        top: -40%
+                        left: -10%
+                        width: 100%
+                        z-index: 1
+                    .egg
+                        position: relative
+                        width: 340px
+                        margin: 0 auto
+                        img
+                            width: 100%
+    .eggs
+        position: relative
+        background-color: $color-primary
+        &::after
+            content: ''
+            position: absolute
+            right: 0
+            bottom: 0
+            width: 0
+            height: 0
+            border-style: solid
+            border-width: 0 0 768px 1920px
+            border-color: transparent transparent $color-bright transparent
+            pointer-events: none
+            z-index: 1
+            @include mobile
+                border-width: 0 0 438px 1920px
+        .container-fluid
+            position: relative
+            padding: 300px 0 200px
+            z-index: 2
+            .eggsTxtBox
+                position: absolute
+                left: 20px
+                top: 100px
+                z-index: 1
+                @include deskMini
+                    left: 50%
+                    transform: translateX(-50%)
+                    top: 50px
+                .eggsTxtList
+                    .eggsTxtItem
+                        .item
+                            .Txt
+                                .text-2xl
+                                    font-weight: 600
+                                    color: #fff
+                                .text-base
+                                    margin: 20px 0
+                                    font-weight: 400
+                                    color: #fff
+                                .btn
+                                    text-decoration: none
+                                    background-color: #fff
+                                    color: $color-primary
+                                    padding: 10px 50px
+                                    display: inline-block
+                                    border-radius: 12px
+            .sideBox
+                position: absolute
+                left: 70%
+                bottom: 100px
+                @include deskMini
+                    left: 50%
+                    transform: translateX(-50%)
+                    bottom: 0
+                @include mobile
+                    bottom: 50px
+                .arrowBox
+                    display: flex
+                    align-items: center
+                    .arrow
+                        margin: 0 70px
+                        z-index: 1
+                        @include pad
+                            margin: 0
+                        .bi
+                            cursor: pointer
+                    .arrowTxt
+                        text-align: center
+                        .appendDots
+                            .slick-dots
+                                display: flex
+                                position: relative
+                                @include deskMini
+                                    bottom: 0
+            .eggsBox
+                @include mobile
+                    overflow: hidden
+                .eggsList
+                    margin-bottom: 0
+                    .slick-list
+                        transform: rotate(-21.5deg)
+                        transform-origin: 50% 50%
+                        @include deskMini
+                            transform: rotate(0deg)
+                        .slick-track
+                            align-items: center
+                            transform: translate3d(0, 0, 0)
+                            .eggsItem
+                                filter: blur(5px)
+                                display: flex
+                                justify-content: center
+                                transform: rotate(21.5deg)
+                                transform-origin: 50% 50%
+                                @include deskMini
+                                    transform: rotate(0deg)
+                            .slick-current
+                                filter: blur(0) drop-shadow(0 0 15px rgba(0, 0, 0, 0.5))
+                                .item
+                                    .Img
+                                        width: 800px
+                                        @include mobile
+                                            width: 280px
+                                        a
+                                            img
+                                                width: 100%
+                                                margin: auto
+    .share
+        position: relative
+        background-color: #fff
+        .container-fluid
+            padding: 88px 0
+            @include mobile
+                padding: 28px 0
+            .txtBox
+                margin: 0 auto
+                text-align: center
+                margin: 44px 0
+                @include mobile
+                    margin: 10px 0
+            .shareBox
+                display: flex
+                align-items: center
+                position: relative
+                .arrow
+                    cursor: pointer
+                .shareList
+                    .slick-list
+                        .slick-track
+                            .shareItem
+                                padding: 10px
+                                .Img
+                                    a
+                                        position: relative
+                                        z-index: 1
+                                        cursor: pointer
+                                        transition: all .5s ease-in-out
+                                        &:hover
+                                            &::after
+                                                content: ''
+                                                position: absolute
+                                                top: 0
+                                                left: 0
+                                                right: 0
+                                                bottom: 0
+                                                background-color: #000
+                                                opacity: 0.2
+                                        .bi
+                                            position: absolute
+                                            left: 10px
+                                            bottom: 10px
+                                            color: #fff
+                                            z-index: 2
+                .slick-slider
+                    overflow-x: hidden
+            .appendDots
+                padding: 20px 0
+                .slick-dots
+                    position: relative
+                    bottom: 20px
+    .footer
+        position: relative
+        display: flex
+        padding: 60px 0
+        background-color: $color-primary
+        color: #fff
+        @include mobile
+            padding: 20px 0
+        .container-fluid
+            display: flex
+            justify-content: space-between
+            align-items: center
+            @include mobile
+                flex-direction: column
+            .company
+                .address, .phone, .email
+                    text-decoration: none
+                    color: #fff
+                    display: flex
+                    margin: 20px 0
+                    @include mobile
+                        margin: 10px 0
+                    img
+                        margin: 0 10px 0 0
+            .logo
+                text-align: center
+                display: flex
+                flex-direction: column
+                align-items: center
+                img
+                    width: 60%
+                @include mobile
+                    display: none
+            .copyright
+                text-align: right
+                line-height: 2rem
+                display: flex
+                flex-direction: column
+                justify-content: space-around
+                height: 100%
+                @include mobile
+                    text-align: center
+                    margin: 20px 0 0 0
+                .icons
+                    .bi
+                        color: #fff
+                        margin: 0 10px
